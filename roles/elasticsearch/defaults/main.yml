@@ -1,5 +1,6 @@
 ---
-elasticsearch_release: 7.x
+elasticsearch_release:      7.x
+elasticsearch_cluster_name: default
 elasticsearch_sysctl:
   - name:  vm.swappiness
     value: 1

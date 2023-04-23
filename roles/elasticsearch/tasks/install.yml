@@ -1,9 +1,4 @@
 ---
-#- name:           install elasticsearch dependent packages
-#  apt:
-#    pkg:          "{{ elasticsearch_common_packages }}"
-#    state:        present
-
 - name:           add elasticsearch apt signing key
   apt_key:
     url:          https://artifacts.elastic.co/GPG-KEY-elasticsearch
@@ -20,9 +15,3 @@
   apt:
     pkg:          elasticsearch
     state:        present
-
-- name:           enable and start elasticsearch service
-  service:
-    name:         elasticsearch
-    state:        started
-    enabled:      yes

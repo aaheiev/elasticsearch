@@ -1,0 +1,16 @@
+# ======================== Elasticsearch Configuration =========================
+cluster.name: {{ elasticsearch_cluster_name }}
+node.name: {{ ansible_hostname }}
+path.data: /var/lib/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: {{ ansible_default_ipv4.address }}
+
+discovery.seed_hosts:
+{% for h in groups['elasticsearch'] %}
+  - {{ hostvars[ h ].inventory_hostname }}
+{% endfor %}
+
+cluster.initial_master_nodes:
+{% for h in groups['elasticsearch'] %}
+  - {{ hostvars[ h ].inventory_hostname }}
+{% endfor %}

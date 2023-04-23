@@ -1,7 +1,9 @@
 #!/usr/bin/env ansible-playbook
 ---
-- name:  ping elasticsearch nodes
+- name:  configure elasticsearch nodes
   hosts: elasticsearch
+  vars:
+    elasticsearch_cluster_name: demo
   roles:
     - common
     - elasticsearch
