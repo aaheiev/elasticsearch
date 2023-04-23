@@ -32,6 +32,8 @@ terraform init
 terraform plan
 terraform apply --auto-approve
 ```
+![terraform apply](media/terraform-apply.png "terraform apply")
+
 once it's done, you'll get new virtual machines and new ansible inventory file **inventory/infra.ini** which will look like
 ```ini
 [elasticsearch]
@@ -56,4 +58,19 @@ Once you have all VM and ansible inventory file, navigate to the root of the pro
 ```
 
 You should see output similar to
-![ansible run](media/ansible.png "Run ansible playbook")
+![ansible run](media/ansible-play.png "Run ansible playbook")
+
+## Test connection
+
+Copy output of **elasticsearch_ip** from terraform and open url http://**elasticsearch_ip**:9200
+
+![show elasticsearch info](media/elastic-show.png "Show ElasticSearch Info")
+
+## Cleanup infrastructure
+
+To delete all created resources run following from the **infra** dir
+```shell
+terraform destroy --auto-approve
+```
+
+![terraform destroy](media/terraform-destroy.png "terraform destroy")
