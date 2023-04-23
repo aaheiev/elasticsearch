@@ -12,7 +12,7 @@
       lineinfile:
         dest: /etc/hosts
         regexp: '.*{{ item }}$'
-        line: "{{ hostvars[item].ansible_host }} {{item}}"
+        line: "{{ hostvars[item].ansible_host }} {{ item }}"
         state: present
       when: hostvars[item].ansible_host is defined and ansible_hostname != item
       with_items: "{{ groups.elasticsearch }}"

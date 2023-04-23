@@ -3,8 +3,12 @@ variable "hcloud_token" {
 }
 
 variable "hcloud_location" {
-  default = "nbg1"
+  default = "fsn1"
 }
+
+#variable "hcloud_datacenter" {
+#  default = "fsn1-dc14"
+#}
 
 variable "nodes_count" {
   type    = number

@@ -42,3 +42,4 @@ terraform.rc
 *.retry
 /tmp/*
 /ansible-vault.pass
+inventory/infra.ini
