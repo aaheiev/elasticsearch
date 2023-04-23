@@ -1,0 +1,16 @@
+---
+# http://ozzimpact.github.io/development/elasticsearch-configuration-tuning
+- name:         kernel tuning
+  sysctl:
+    name:       "{{ item.name }}"
+    value:      "{{ item.value }}"
+    sysctl_set: "yes"
+  with_items:   "{{ elasticsearch_sysctl }}"
+
+- name:         change elasticsearch pam_limits
+  community.general.pam_limits:
+    domain:     elasticsearch
+    limit_type: "{{ item.type }}"
+    limit_item: "{{ item.item }}"
+    value:      "{{ item.value }}"
+  with_items:   "{{ elasticsearch_pam_limits }}"

@@ -1,0 +1,24 @@
+---
+elasticsearch_release: 7.x
+elasticsearch_sysctl:
+  - name:  vm.swappiness
+    value: 1
+  - name:  net.core.somaxconn
+    value: 65535
+  - name:  fs.file-max
+    value: 518144
+  - name:  vm.max_map_count
+    value: 262144
+elasticsearch_pam_limits:
+  - type:  soft
+    item:  nofile
+    value: 65535
+  - type:  hard
+    item:  nofile
+    value: 65535
+  - type:  soft
+    item:  memlock
+    value: unlimited
+  - type:  hard
+    item:  memlock
+    value: unlimited

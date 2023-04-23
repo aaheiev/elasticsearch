@@ -1,0 +1,16 @@
+---
+# tasks file for common
+- name: "set timezone to {{ timezone }}"
+  timezone:
+    name: "{{ timezone }}"
+
+- name: "update repositories cache and upgrade all packages"
+  apt:
+    upgrade:          "yes"
+    update_cache:     "yes"
+    cache_valid_time: 86400 #One day
+
+- name: "install common packages"
+  apt:
+    pkg: "{{ common.packages }}"
+    state: present

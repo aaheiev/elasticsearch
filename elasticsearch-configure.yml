@@ -1,0 +1,16 @@
+#!/usr/bin/env ansible-playbook
+---
+- name:  ping elasticsearch nodes
+  hosts: elasticsearch
+  roles:
+    - common
+    - elasticsearch
+  tasks:
+    - name: Add IP address of all hosts to all hosts
+      lineinfile:
+        dest: /etc/hosts
+        regexp: '.*{{ item }}$'
+        line: "{{ hostvars[item].ansible_host }} {{item}}"
+        state: present
+      when: hostvars[item].ansible_host is defined and ansible_hostname != item
+      with_items: "{{ groups.elasticsearch }}"

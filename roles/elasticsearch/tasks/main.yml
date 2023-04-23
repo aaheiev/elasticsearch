@@ -1,0 +1,6 @@
+---
+- name:         tune elasticsearch server
+  import_tasks: server-config.yml
+
+- name:         install elasticsearch
+  import_tasks: install.yml

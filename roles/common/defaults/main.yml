@@ -1,0 +1,11 @@
+---
+# defaults file for common
+common:
+  packages:
+    - mc
+    - htop
+    - aptitude
+    - bash-completion
+    - tmux
+    - ncdu
+    - software-properties-common
